@@ -56,7 +56,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button asChild className="bg-primary hover:bg-[#246332] text-primary-foreground gap-2 shadow-sm hover:shadow-md">
+            <Button asChild className="bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
               <a
                 href="https://wa.me/2347031988727?text=Hello%20I%20want%20to%20order%20a%20rug"
                 target="_blank"
@@ -98,7 +98,7 @@ export function Header() {
                 </Link>
               ))}
             </div>
-            <Button asChild className="w-full bg-primary hover:bg-[#246332] text-primary-foreground gap-2 shadow-sm hover:shadow-md">
+            <Button asChild className="w-full bg-primary hover:bg-gold-dark text-primary-foreground gap-2">
               <a
                 href="https://wa.me/2347031988727?text=Hello%20I%20want%20to%20order%20a%20rug"
                 target="_blank"

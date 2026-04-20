@@ -100,31 +100,6 @@
   }
 }
 
-/* Typography System */
-h1, h2, h3, h4, h5, h6 {
-  @apply text-foreground;
-}
-
-h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-}
-
-h2 {
-  @apply text-3xl md:text-4xl font-bold leading-tight;
-}
-
-h3 {
-  @apply text-2xl font-bold leading-snug;
-}
-
-h4 {
-  @apply text-xl font-semibold;
-}
-
-p {
-  @apply text-foreground/80 leading-relaxed;
-}
-
 /* Custom animations */
 @keyframes slideInUp {
   from {
@@ -148,15 +123,6 @@ p {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .animate-slide-up {
   animation: slideInUp 0.6s ease-out;
 }
@@ -165,81 +131,24 @@ p {
   animation: scaleIn 0.6s ease-out;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
+/* Smooth transitions */
+button,
+a,
+.card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Modern Card System */
-.card-modern {
-  @apply bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all duration-300 p-6;
-}
-
-.card-modern-lg {
-  @apply bg-card rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all duration-300 p-8;
-}
-
-.card-elevated {
-  @apply bg-card rounded-2xl border border-border shadow-md hover:shadow-xl transition-all duration-300 p-6;
-}
-
-/* Premium Spacing System */
-.section-padding {
-  @apply py-20 md:py-28 lg:py-32;
-}
-
-.section-padding-sm {
-  @apply py-12 md:py-16 lg:py-20;
-}
-
-.container-max {
-  @apply max-w-7xl mx-auto;
-}
-
-/* Interactive Elements */
-a {
-  @apply transition-colors duration-200;
-}
-
-a:hover {
-  @apply text-primary;
-}
-
-/* Input Styles */
-input,
-textarea,
-select {
-  @apply w-full px-4 py-2.5 rounded-lg border border-border bg-background text-foreground transition-all duration-200 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20;
-}
-
-input:disabled,
-textarea:disabled,
-select:disabled {
-  @apply bg-muted cursor-not-allowed opacity-50;
-}
-
-/* Badge and Tag Styles */
-.badge-primary {
-  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary font-medium text-xs;
-}
-
-.badge-accent {
-  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/20 text-accent font-medium text-xs;
-}
-
-.badge-success {
-  @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-100 text-green-700 font-medium text-xs;
-}
-
-/* Product Card Hover Effects */
+/* Product card hover effects */
 .product-card {
-  @apply transition-all duration-300;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  @apply -translate-y-2 shadow-lg;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(45, 122, 62, 0.1);
 }
 
-/* Soft Shadows */
+/* Soft shadows */
 .shadow-soft {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
 }
@@ -252,18 +161,31 @@ select:disabled {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Image Zoom Effect */
+/* Button hover scale effect */
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Image hover zoom */
 .image-hover-zoom {
-  @apply transition-transform duration-300 overflow-hidden;
+  transition: transform 0.3s ease;
+  overflow: hidden;
 }
 
 .image-hover-zoom:hover {
-  @apply scale-105;
+  transform: scale(1.05);
 }
 
-/* Sticky WhatsApp Button */
+/* Sticky WhatsApp button */
 .whatsapp-sticky {
-  @apply fixed bottom-8 right-8 z-40;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 40;
   animation: bounce 2s infinite;
 }
 
@@ -276,40 +198,42 @@ select:disabled {
   }
 }
 
-/* Modern Divider */
-.divider-soft {
-  @apply h-px bg-gradient-to-r from-transparent via-border to-transparent;
+/* Lime green accent highlights */
+.accent-highlight {
+  color: #7bc043;
 }
 
-/* Accessible Focus States */
-.focus-ring {
-  @apply outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+.bg-accent-light {
+  background-color: #7bc043;
 }
 
-/* Modern Section Backgrounds */
-.section-bg-primary {
-  @apply bg-gradient-to-br from-primary/5 to-primary/10;
+.border-accent {
+  border-color: #7bc043;
 }
 
-.section-bg-accent {
-  @apply bg-gradient-to-br from-accent/10 to-accent/5;
+/* Underline effect with lime green */
+.underline-accent {
+  position: relative;
 }
 
-/* Text Utilities */
-.text-balance {
-  text-wrap: balance;
+.underline-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #7bc043;
+  transition: width 0.3s ease;
 }
 
-.text-pretty {
-  text-wrap: pretty;
+.underline-accent:hover::after {
+  width: 100%;
 }
 
-/* Smooth Transitions on All Interactive Elements */
-button,
-a,
-input,
-select,
-textarea,
-.interactive {
-  @apply transition-all duration-200;
+/* Crown icon styling */
+.crown-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
