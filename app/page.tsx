@@ -70,7 +70,7 @@ export default function HomePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-gold-dark text-primary-foreground text-base px-8 py-6 h-auto shadow-soft-lg"
+                className="bg-primary hover:bg-[#246332] text-primary-foreground text-base px-8 py-6 h-auto shadow-soft-lg hover:shadow-lg"
               >
                 <Link href="/products" className="gap-2">
                   Shop Collection
@@ -136,7 +136,7 @@ export default function HomePage() {
             </div>
             <Button
               asChild
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-fit px-8 py-6 h-auto gap-2"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-fit px-8 py-6 h-auto gap-2 shadow-sm hover:shadow-md"
               data-aos="fade-up"
             >
               <Link href="/products">
@@ -227,7 +227,7 @@ export default function HomePage() {
             <Button
               asChild
               size="lg"
-              className="bg-primary hover:bg-gold-dark text-primary-foreground text-base px-10 py-6 h-auto shadow-soft-lg gap-2"
+              className="bg-primary hover:bg-[#246332] text-primary-foreground text-base px-10 py-6 h-auto shadow-soft-lg hover:shadow-lg gap-2"
             >
               <a
                 href="https://wa.me/2347031988727?text=Hello%20I%20want%20to%20order%20a%20rug"
