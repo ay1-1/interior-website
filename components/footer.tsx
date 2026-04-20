@@ -64,27 +64,27 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <Phone className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
                 <a
                   href="tel:+2347031988727"
-                  className="text-background/70 hover:text-primary transition-colors text-sm font-medium"
+                  className="text-background/70 hover:text-accent transition-colors text-sm font-medium"
                 >
                   +234 703 198 8727
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MessageCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <MessageCircle className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
                 <a
                   href="https://wa.me/2347031988727"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-background/70 hover:text-primary transition-colors text-sm font-medium"
+                  className="text-background/70 hover:text-accent transition-colors text-sm font-medium"
                 >
                   WhatsApp Us
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
                 <span className="text-background/70 text-sm font-medium">
                   Zeelux Mall, 1 Alh Arole Close, Ogudu, Kosofe, Lagos, Nigeria
                 </span>
@@ -101,10 +101,10 @@ export function Footer() {
               href="https://www.instagram.com/doublecrown_interiors"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-background/70 hover:text-primary transition-colors group"
+              className="inline-flex items-center gap-3 text-background/70 hover:text-accent transition-colors group"
             >
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                <Instagram className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+                <Instagram className="w-5 h-5 text-accent" />
               </div>
               <div className="flex flex-col">
                 <span className="text-xs text-background/50 uppercase tracking-wider">Instagram</span>
