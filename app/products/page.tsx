@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/product-card"
 import { products, categories } from "@/lib/products"
 import { Button } from "@/components/ui/button"
 import { Suspense } from "react"
+import { cn } from "@/lib/utils"
 
 function ProductsContent() {
   const searchParams = useSearchParams()
@@ -22,56 +23,65 @@ function ProductsContent() {
   const allCategories = ["All", ...categories.map((c) => c.slug)]
 
   return (
-    <div className="py-12 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12" data-aos="fade-up">
-          <span className="text-primary font-medium text-sm tracking-wide uppercase">
-            Our Collection
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-            Premium Rugs & Carpets
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Browse our exclusive collection of luxury rugs, carpets, and runners.
-            Each piece is carefully selected for quality and elegance.
-          </p>
+    <div className="min-h-screen bg-white">
+      {/* Editorial Header */}
+      <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-primary">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:60px_60px]" />
         </div>
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl" data-aos="fade-right">
+            <span className="text-white font-bold text-[11px] tracking-[0.5em] uppercase mb-6 block border-l-2 border-white/20 pl-4 opacity-70">
+              Signature Collections
+            </span>
+            <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1] mb-8 tracking-tighter uppercase">
+              Curated <br/> <span className="italic text-white/80">Excellence</span>
+            </h1>
+            <p className="text-white/70 text-lg md:text-xl font-light leading-relaxed max-w-xl text-pretty">
+              Discover our masterfully handcrafted rugs, where traditional artistry meets contemporary elegance.
+              Each piece is a testament to timeless luxury.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        {/* Category Filter */}
-        <div
-          className="flex flex-wrap justify-center gap-3 mb-12"
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -translate-y-12 relative z-20">
+        {/* Category Filter - High End Tab Style */}
+        <div 
+          className="bg-white/80 backdrop-blur-2xl border border-primary/5 p-2 rounded-full shadow-soft-xl flex overflow-x-auto no-scrollbar gap-1 mb-16 scroll-smooth"
           data-aos="fade-up"
-          data-aos-delay="100"
         >
           {allCategories.map((category) => (
-            <Button
+            <button
               key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              className={
-                selectedCategory === category
-                  ? "bg-primary hover:bg-gold-dark text-primary-foreground"
-                  : "border-border text-foreground hover:border-primary hover:text-primary"
-              }
               onClick={() => setSelectedCategory(category)}
+              className={cn(
+                "px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-[0.2em] transition-all whitespace-nowrap",
+                selectedCategory === category
+                  ? "bg-primary text-white shadow-lg"
+                  : "text-primary/40 hover:text-primary hover:bg-primary/5"
+              )}
             >
               {category}
-            </Button>
+            </button>
           ))}
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
+        {/* Products Grid - 3 Columns for larger appearance */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-24">
+          {filteredProducts.map((product, index) => (
+            <div key={product.id} data-aos="fade-up" data-aos-delay={index * 50}>
+              <ProductCard {...product} />
+            </div>
           ))}
         </div>
 
         {/* Empty State */}
         {filteredProducts.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-muted-foreground text-lg">
-              No products found in this category.
+          <div className="text-center py-32 bg-secondary/10 rounded-[40px] mb-24 border border-dashed border-primary/10">
+            <p className="text-primary/40 text-sm font-bold uppercase tracking-widest">
+              No pieces found in this category.
             </p>
           </div>
         )}
@@ -83,19 +93,10 @@ function ProductsContent() {
 export default function ProductsPage() {
   return (
     <Suspense fallback={
-      <div className="py-12 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-primary font-medium text-sm tracking-wide uppercase">
-              Our Collection
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-              Premium Rugs & Carpets
-            </h1>
-          </div>
-          <div className="flex justify-center">
-            <div className="animate-pulse text-muted-foreground">Loading products...</div>
-          </div>
+      <div className="min-h-screen bg-white pt-48 flex justify-center">
+        <div className="animate-pulse flex flex-col items-center gap-4">
+          <div className="w-12 h-12 rounded-full border-4 border-primary/10 border-t-primary animate-spin" />
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary/40">Loading Collection</span>
         </div>
       </div>
     }>

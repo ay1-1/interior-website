@@ -10,21 +10,21 @@ interface TestimonialCardProps {
 export function TestimonialCard({ name, location, review, rating }: TestimonialCardProps) {
   return (
     <div
-      className="bg-card border border-border rounded-2xl p-8 shadow-soft hover:shadow-soft-lg transition-all duration-300 group"
+      className="bg-white border border-primary/5 rounded-[32px] p-10 shadow-soft hover:shadow-soft-lg transition-all duration-500 group relative"
       data-aos="fade-up"
     >
-      <div className="flex gap-1 mb-6">
+      <div className="flex gap-1 mb-8">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
-            className={`w-5 h-5 ${
-              i < rating ? "fill-accent text-accent" : "fill-muted text-muted"
+            className={`w-4 h-4 ${
+              i < rating ? "fill-primary text-primary" : "fill-muted text-muted"
             }`}
           />
         ))}
       </div>
-      <div className="mb-6 relative">
-        <Quote className="w-8 h-8 text-accent/15 mb-3" />
+      <div className="mb-8 relative z-10">
+        <Quote className="w-10 h-10 text-primary/10 absolute -top-4 -left-4 -z-10 transform -rotate-12 group-hover:rotate-0 transition-transform duration-500" />
         <p className="text-foreground leading-relaxed font-medium italic">{`"${review}"`}</p>
       </div>
       <div className="pt-6 border-t border-border">

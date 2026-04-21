@@ -5,48 +5,45 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fafaf8;
+  --background: #ffffff;
   --foreground: #1a1a1a;
   --card: #ffffff;
   --card-foreground: #1a1a1a;
   --popover: #ffffff;
   --popover-foreground: #1a1a1a;
-  --primary: #2d7a3e;
+  --primary: #1e4d2b;
   --primary-foreground: #ffffff;
-  --secondary: #f5f3f0;
+  --secondary: #f4f7f5;
   --secondary-foreground: #1a1a1a;
-  --muted: #f0ede8;
+  --muted: #f4f4f4;
   --muted-foreground: #6b6b6b;
-  --accent: #7bc043;
+  --accent: #2d7a3e;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: #e8e4de;
-  --input: #e8e4de;
-  --ring: #2d7a3e;
-  --gold: #7bc043;
-  --gold-dark: #2d7a3e;
-  --cream: #faf8f5;
-  --chart-1: #2d7a3e;
-  --chart-2: #7bc043;
-  --chart-3: #f5f3f0;
+  --border: #eef2ef;
+  --input: #eef2ef;
+  --ring: #1e4d2b;
+  --cream: #fafefc;
+  --chart-1: #1e4d2b;
+  --chart-2: #2d7a3e;
+  --chart-3: #f3f3f3;
   --chart-4: #9ca3af;
   --chart-5: #d1d5db;
-  --radius: 0.625rem;
-  --sidebar: #fafaf8;
+  --radius: 0.25rem;
+  --sidebar: #ffffff;
   --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #2d7a3e;
+  --sidebar-primary: #1e4d2b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f3f0;
+  --sidebar-accent: #f4f7f5;
   --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #e8e4de;
-  --sidebar-ring: #2d7a3e;
+  --sidebar-border: #eef2ef;
+  --sidebar-ring: #1e4d2b;
 }
 
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback';
-  --font-serif: 'Playfair Display', 'Playfair Display Fallback';
-  --font-mono: 'Playfair Display', 'Playfair Display Fallback';
+  --font-sans: var(--font-geist), 'Inter', 'Inter Fallback';
+  --font-serif: var(--font-geist), 'Playfair Display', 'Playfair Display Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -95,34 +92,40 @@
   body {
     @apply bg-background text-foreground;
   }
-  html {
+  html, body {
     scroll-behavior: smooth;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
-}
 
-/* Typography System */
-h1, h2, h3, h4, h5, h6 {
-  @apply text-foreground;
-}
+  html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
 
-h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-}
+  /* Typography System */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans text-foreground tracking-[-0.02em];
+  }
 
-h2 {
-  @apply text-3xl md:text-4xl font-bold leading-tight;
-}
+  h1 {
+    @apply text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 tracking-tighter;
+  }
+  
+  h2 {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold leading-[1] mb-8 tracking-tighter;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold leading-[1.1] mb-6 tracking-tight;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold mb-4 tracking-tight;
+  }
 
-h3 {
-  @apply text-2xl font-bold leading-snug;
-}
-
-h4 {
-  @apply text-xl font-semibold;
-}
-
-p {
-  @apply text-foreground/80 leading-relaxed;
+  p {
+    @apply text-foreground/80 leading-relaxed text-pretty mb-4;
+  }
 }
 
 /* Custom animations */
@@ -302,6 +305,47 @@ select:disabled {
 
 .text-pretty {
   text-wrap: pretty;
+}
+
+/* Static Hero Card Stack */
+.hero-card-stack {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-card {
+  position: absolute;
+  width: 320px;
+  height: 460px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+  border: 10px solid #ffffff;
+}
+
+.hero-card:nth-child(1) {
+  z-index: 3;
+  transform: translateX(-120px) translateY(20px) scale(0.9);
+}
+
+.hero-card:nth-child(2) {
+  z-index: 10;
+  transform: scale(1);
+}
+
+.hero-card:nth-child(3) {
+  z-index: 3;
+  transform: translateX(120px) translateY(-20px) scale(0.9);
+}
+
+.hero-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Smooth Transitions on All Interactive Elements */

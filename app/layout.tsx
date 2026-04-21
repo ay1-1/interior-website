@@ -1,22 +1,16 @@
 import type { Metadata, Viewport } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Geist } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { Header } from '@/components/header'
+import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { WhatsAppButton } from '@/components/whatsapp-button'
 import { AOSProvider } from '@/components/aos-provider'
 import './globals.css'
 
-const playfair = Playfair_Display({ 
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-})
-
-const inter = Inter({ 
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
@@ -55,15 +49,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable} bg-background`}>
-      <body className="font-sans antialiased min-h-screen flex flex-col">
+    <html lang="en" className={`${geist.variable} font-sans bg-background`}>
+      <body className="antialiased min-h-screen flex flex-col font-sans">
         <AOSProvider>
-          <Header />
+          <Navbar />
           <main className="flex-1">
             {children}
           </main>
           <Footer />
-          <WhatsAppButton />
         </AOSProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

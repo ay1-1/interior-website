@@ -1,59 +1,55 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { MessageCircle, Star } from "lucide-react"
 
 interface ProductCardProps {
   name: string
-  price: string
   size: string
   image: string
   category?: string
 }
 
-export function ProductCard({ name, price, size, image, category }: ProductCardProps) {
+export function ProductCard({ name, size, image, category }: ProductCardProps) {
   const whatsappMessage = encodeURIComponent(
-    `Hello, I want to order the ${name} (${size}) - ${price}`
+    `Hello, I want to order the ${name} (${size})`
   )
   const whatsappUrl = `https://wa.me/2347031988727?text=${whatsappMessage}`
 
   return (
     <div
-      className="product-card group bg-card rounded-2xl overflow-hidden shadow-soft hover:shadow-soft-lg border border-border transition-all duration-300 flex flex-col h-full"
-      data-aos="zoom-in"
+      className="group relative bg-[#1e4d2b] rounded-[40px] overflow-hidden border-none transition-all duration-700 flex flex-col aspect-[4/5] hover:-translate-y-2 hover:shadow-soft-xl"
+      data-aos="fade-up"
     >
-      <div className="relative aspect-square overflow-hidden bg-muted">
+      {/* Image Container */}
+      <div className="absolute inset-0 z-0">
         <Image
           src={image}
           alt={name}
           fill
-          className="image-hover-zoom object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="image-hover-zoom object-cover transition-all duration-1000 group-hover:scale-110"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         {category && (
-          <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-full">
-            {category}
-          </span>
+          <div className="absolute top-6 left-6 z-10">
+            <span className="bg-white text-primary text-[9px] font-bold px-4 py-2 uppercase tracking-widest rounded-full">
+              {category}
+            </span>
+          </div>
         )}
-        <div className="absolute top-4 right-4 flex gap-1">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
-          ))}
-        </div>
       </div>
-      <div className="p-6 flex flex-col flex-1">
-        <h3 className="font-bold text-foreground text-lg mb-2 line-clamp-2 leading-tight">
+      
+      {/* Hover Overlay Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full w-full p-8 text-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 bg-[#1e4d2b]/60 backdrop-blur-sm">
+        <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.4em] mb-4">{size}</p>
+        <h3 className="text-white text-2xl md:text-3xl font-bold tracking-tight mb-8 text-balance uppercase">
           {name}
         </h3>
-        <p className="text-muted-foreground text-sm mb-4 font-medium">{size}</p>
-        <div className="flex items-baseline gap-2 mb-6 mt-auto">
-          <p className="text-primary font-bold text-2xl">{price}</p>
-        </div>
+        
         <Button
           asChild
-          className="w-full bg-primary hover:bg-[#246332] text-primary-foreground gap-2 font-semibold py-3 h-auto rounded-lg shadow-sm hover:shadow-md"
+          radius="full"
+          className="bg-white text-primary hover:bg-white/90 font-bold uppercase text-[12px] tracking-[0.3em] px-10 py-6 h-auto transition-all duration-500 rounded-full"
         >
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            <MessageCircle className="w-4 h-4" />
             Order Now
           </a>
         </Button>
